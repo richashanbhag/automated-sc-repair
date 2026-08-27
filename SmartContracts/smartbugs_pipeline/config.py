@@ -5,6 +5,9 @@ DATA_DIR = PROJECT_DIR / "data"
 INDEX_PATH = DATA_DIR / "index.csv"
 RESULTS_PATH = DATA_DIR / "results.csv"
 SUMMARY_PATH = DATA_DIR / "contract_summary.csv"
+ANALYSIS_PATH = DATA_DIR / "analysis.csv"
+FINDINGS_PATH = DATA_DIR / "findings.csv"
+AST_JSONL_PATH = DATA_DIR / "ast.jsonl"
 FAILED_PATH = DATA_DIR / "failed.csv"
 RAW_DIR = DATA_DIR / "slither_raw"
 LOG_DIR = DATA_DIR / "logs"
@@ -24,6 +27,15 @@ SUMMARY_FIELDS = [
 FAILED_FIELDS = [
     "filename", "filepath", "stage", "error_type", "error_message", "pragma",
     "resolved_solc_version",
+]
+ANALYSIS_FIELDS = [
+    "filename", "filepath", "pragma", "resolved_solc_version", "analysis_status",
+    "compiler_resolution_status", "source_compilation_status", "ast_status", "slither_status", "detector_count",
+    "execution_time_seconds",
+]
+FINDING_FIELDS = [
+    "filename", "filepath", "detector", "impact", "confidence", "description",
+    "contract", "function", "source_lines",
 ]
 
 

@@ -10,6 +10,7 @@ from dataclasses import dataclass
 
 Version = tuple[int, int, int]
 VERSION_RE = re.compile(r"(?<![\w.])(0\.\d+\.\d+)(?![\w.])")
+PRAGMA_RE = re.compile(r"pragma\s+solidity\s+([^;]+);", re.I)
 
 
 def _normalize_constraint(value: str) -> str:
@@ -85,12 +86,20 @@ def installed_versions() -> list[str]:
     return sorted(versions, key=version_tuple)
 
 
-def resolve_compiler(pragma: str) -> CompilerResolution:
-    resolution = CompilerResolution(pragma=pragma)
-    normalized = _normalize_constraint(pragma)
-    if not normalized or not VERSION_RE.search(normalized):
+def extract_pragmas(source: str) -> list[str]:
+    """Return every Solidity pragma directive in source order."""
+    return [f"pragma solidity {match.group(1).strip()};" for match in PRAGMA_RE.finditer(source)]
+
+
+def resolve_compiler(pragmas: str | list[str]) -> CompilerResolution:
+    """Resolve one installed compiler compatible with every pragma directive."""
+    constraints = [pragmas] if isinstance(pragmas, str) else pragmas
+    normalized_constraints = [_normalize_constraint(value) for value in constraints if value.strip()]
+    display_pragma = " ".join(normalized_constraints)
+    resolution = CompilerResolution(pragma=display_pragma)
+    if not normalized_constraints or any(not VERSION_RE.search(value) for value in normalized_constraints):
         resolution.error_type = "unresolved_constraint"
-        resolution.error_message = "No usable Solidity compiler constraint in index.csv"
+        resolution.error_message = "No usable Solidity compiler constraint in source"
         return resolution
     if not shutil.which("solc-select"):
         resolution.error_type = "missing_tool"
@@ -98,22 +107,31 @@ def resolve_compiler(pragma: str) -> CompilerResolution:
         return resolution
     try:
         installed = installed_versions()
-        compatible = [item for item in installed if _compatible(version_tuple(item), normalized)]
+        compatible = [
+            item for item in installed
+            if all(_compatible(version_tuple(item), constraint) for constraint in normalized_constraints)
+        ]
         if compatible:
             selected = compatible[-1]
         else:
-            # Installing the highest patch in the pragma's first minor line is reproducible and
-            # avoids silently crossing minor-version boundaries for old contracts.
-            base = version_tuple(VERSION_RE.search(normalized).group(1))  # type: ignore[union-attr]
-            selected = f"{base[0]}.{base[1]}.{base[2]}"
+            # Prefer an explicit version mentioned by any constraint that satisfies all
+            # directives (for example ^0.4.0 plus an exact 0.4.16 pragma).
+            candidates = sorted({match.group(1) for value in normalized_constraints for match in VERSION_RE.finditer(value)}, key=version_tuple)
+            selected = next((item for item in reversed(candidates) if all(_compatible(version_tuple(item), constraint) for constraint in normalized_constraints)), "")
+            if not selected:
+                raise RuntimeError(f"No compiler version can satisfy all pragmas: {display_pragma}")
             install = _run(["solc-select", "install", selected])
             if install.returncode != 0:
                 raise RuntimeError((install.stderr or install.stdout).strip() or f"Could not install solc {selected}")
-        if not _compatible(version_tuple(selected), normalized):
-            raise RuntimeError(f"Resolved solc {selected} is incompatible with {pragma}")
+        if not all(_compatible(version_tuple(selected), constraint) for constraint in normalized_constraints):
+            raise RuntimeError(f"Resolved solc {selected} is incompatible with {display_pragma}")
         activate = _run(["solc-select", "use", selected])
         if activate.returncode != 0:
             raise RuntimeError((activate.stderr or activate.stdout).strip() or f"Could not activate solc {selected}")
+        version_check = _run(["solc", "--version"])
+        if version_check.returncode != 0 or selected not in version_check.stdout:
+            message = (version_check.stderr or version_check.stdout).strip()
+            raise RuntimeError(message or f"Active solc does not match selected version {selected}")
         resolution.version = selected
         resolution.status = "SUCCESS"
         return resolution

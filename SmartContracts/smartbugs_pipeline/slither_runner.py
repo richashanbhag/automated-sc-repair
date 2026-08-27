@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -20,17 +21,20 @@ class SlitherRun:
     error_message: str = ""
 
 
-def run_slither(contract_path: Path, raw_path: Path, timeout: int) -> SlitherRun:
+def run_slither(contract_path: Path, raw_path: Path, timeout: int, solc_version: str = "") -> SlitherRun:
     started = time.monotonic()
     if not shutil.which("slither"):
         return SlitherRun("FAILED", 0.0, error_type="missing_tool", error_message="slither is not installed or not on PATH")
     raw_path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="slither-") as temp_dir:
         output_path = Path(temp_dir) / "output.json"
+        env = os.environ.copy()
+        if solc_version:
+            env["SOLC_VERSION"] = solc_version
         try:
             result = subprocess.run(
                 ["slither", str(contract_path), "--json", str(output_path)],
-                capture_output=True, text=True, timeout=timeout, check=False,
+                capture_output=True, text=True, timeout=timeout, check=False, env=env,
             )
         except subprocess.TimeoutExpired as exc:
             return SlitherRun("FAILED", time.monotonic() - started, error_type="timeout", error_message=str(exc))

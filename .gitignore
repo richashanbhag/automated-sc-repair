@@ -1,0 +1,3 @@
+# Dataset repositories are local inputs, not part of this pipeline source commit.
+SmartContracts/smartbugs-curated/
+SmartContracts/smartbugs-wild/

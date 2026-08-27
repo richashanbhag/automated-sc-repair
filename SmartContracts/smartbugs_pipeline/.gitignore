@@ -1,0 +1,46 @@
+# Python environments, bytecode, and test/tool caches
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+
+# Generated pipeline artifacts.
+data/
+data/ast.jsonl
+data/slither_raw/
+data/logs/
+data/**/*.csv
+data/**/*.json
+data/**/*.jsonl
+
+# Local databases and secrets
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Editor, temporary, and cache files
+*.bak
+*.tmp
+*.temp
+*.cache
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
