@@ -1,0 +1,9 @@
+{
+  "_comment": "Only reliable mappings are listed; every unlisted detector maps to UNKNOWN.",
+  "controlled-delegatecall": "SWC-112",
+  "delegatecall-loop": "SWC-112",
+  "reentrancy-*": "SWC-107",
+  "suicidal": "SWC-106",
+  "tx-origin": "SWC-115",
+  "unprotected-upgrade": "SWC-105"
+}

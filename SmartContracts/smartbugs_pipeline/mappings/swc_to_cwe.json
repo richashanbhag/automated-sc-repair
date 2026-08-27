@@ -1,0 +1,10 @@
+{
+  "_comment": "Conservative project mappings; every unlisted SWC maps to UNKNOWN.",
+  "SWC-105": "CWE-284",
+  "SWC-106": "CWE-284",
+  "SWC-107": "CWE-841",
+  "SWC-112": "CWE-829",
+  "SWC-115": "CWE-346",
+  "SWC-118": "CWE-665",
+  "SWC-124": "CWE-123"
+}

@@ -1,0 +1,2505 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 1549,
+              "length": 26,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                75
+              ],
+              "starting_column": 1,
+              "ending_column": 27
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ERC20Basic",
+                "source_mapping": {
+                  "start": 1526,
+                  "length": 260,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "IranCoinToken",
+            "source_mapping": {
+              "start": 6323,
+              "length": 121,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                210,
+                211,
+                212,
+                213
+              ],
+              "starting_column": 1,
+              "ending_column": 2
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "IranCoinToken",
+                "source_mapping": {
+                  "start": 5922,
+                  "length": 525,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "IranCoinToken()"
+            }
+          }
+        ],
+        "description": "ERC20Basic.totalSupply (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#75) is never initialized. It is used in:\n\t- IranCoinToken.IranCoinToken() (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#210-213)\n",
+        "markdown": "[ERC20Basic.totalSupply](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L75) is never initialized. It is used in:\n\t- [IranCoinToken.IranCoinToken()](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L210-L213)\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L75",
+        "id": "752320c41a6d6a84f1a9009d6b16d2df499124b56ce49ae0e94021e39ee7b3db",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-state-variables"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.26 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.26 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "c7d638b1e771d6abd47c965e1dc1d602dca6481f45f5718f0f579b9cf306ec28",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.18",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".18"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- ^0.4.18 (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#1)\n",
+        "markdown": "Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- [^0.4.18](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L1)\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L1",
+        "id": "cc50ea80bb74364ed2a4a29e2e154cf4238335bd878b874907b17a67f931ad44",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 4740,
+              "length": 16,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                165
+              ],
+              "starting_column": 36,
+              "ending_column": 52
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 4705,
+                  "length": 122,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    165,
+                    166,
+                    167
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._spender (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#165) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._spender](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L165) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L165",
+        "id": "1dfe198c2dca57c55bebb6453f93f0f0fc9b1e67fc091a4bcfa314300d9a90a6",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 4259,
+              "length": 14,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                153
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 4224,
+                  "length": 173,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    153,
+                    154,
+                    155,
+                    156,
+                    157
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._value (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#153) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._value](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L153) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L153",
+        "id": "1fa3f5bb048f68171399fc7d36b8e34d891cac5b9e22c65b41391d16050e7922",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2433,
+              "length": 14,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                97
+              ],
+              "starting_column": 32,
+              "ending_column": 46
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2402,
+                  "length": 358,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BasicToken",
+                    "source_mapping": {
+                      "start": 2148,
+                      "length": 927,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter BasicToken.transfer(address,uint256)._value (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#97) is not in mixedCase\n",
+        "markdown": "Parameter [BasicToken.transfer(address,uint256)._value](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L97) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L97",
+        "id": "2525bb88bf13ac589b8b10ace92928eab5e1e6a42b10ca3d8b6a6122b9dde16c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 4724,
+              "length": 14,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                165
+              ],
+              "starting_column": 20,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 4705,
+                  "length": 122,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    165,
+                    166,
+                    167
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._owner (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#165) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._owner](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L165) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L165",
+        "id": "317c0e860cb8a5338f5dfaf51d2249bbf1eb4e87ed588c7a888b367544a25740",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 3227,
+              "length": 13,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                131
+              ],
+              "starting_column": 23,
+              "ending_column": 36
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3205,
+                  "length": 415,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._from (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#131) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._from](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131",
+        "id": "4dd3d547c81f2913d544b98793a5c021fe472f59b45114f773a817330cf34bfc",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 3242,
+              "length": 11,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                131
+              ],
+              "starting_column": 38,
+              "ending_column": 49
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3205,
+                  "length": 415,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._to (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#131) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._to](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131",
+        "id": "6150a62fc365f4a97437d70d15bfe1ca02b48e7695b0f9d432eb82ac34404d51",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 4241,
+              "length": 16,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                153
+              ],
+              "starting_column": 18,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 4224,
+                  "length": 173,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    153,
+                    154,
+                    155,
+                    156,
+                    157
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._spender (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#153) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._spender](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L153) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L153",
+        "id": "70a9b4c8c2d4dca0d12170ecce3b3b3e56f16721a930795c44e5e7b45a10a5c1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 5082,
+              "length": 16,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                175
+              ],
+              "starting_column": 27,
+              "ending_column": 43
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "increaseApproval",
+                "source_mapping": {
+                  "start": 5056,
+                  "length": 247,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    175,
+                    176,
+                    177,
+                    178,
+                    179
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "increaseApproval(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.increaseApproval(address,uint256)._spender (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#175) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.increaseApproval(address,uint256)._spender](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L175) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L175",
+        "id": "81d5ce1851b7db9550d0b5dc79356bebecb8c8b57e3b166c81d5a34a173bcd24",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 2420,
+              "length": 11,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                97
+              ],
+              "starting_column": 19,
+              "ending_column": 30
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2402,
+                  "length": 358,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BasicToken",
+                    "source_mapping": {
+                      "start": 2148,
+                      "length": 927,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter BasicToken.transfer(address,uint256)._to (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#97) is not in mixedCase\n",
+        "markdown": "Parameter [BasicToken.transfer(address,uint256)._to](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L97) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L97",
+        "id": "8783382f8455795c3d032eb66ff742383d17802a5253d518dc864075a741f12b",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 5333,
+              "length": 16,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                181
+              ],
+              "starting_column": 27,
+              "ending_column": 43
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "decreaseApproval",
+                "source_mapping": {
+                  "start": 5307,
+                  "length": 369,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    181,
+                    182,
+                    183,
+                    184,
+                    185,
+                    186,
+                    187,
+                    188,
+                    189,
+                    190
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "decreaseApproval(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.decreaseApproval(address,uint256)._spender (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#181) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.decreaseApproval(address,uint256)._spender](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L181) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L181",
+        "id": "946983a5cef3a45f9c6459d1c711b88d64b5ddabd920b7f1ffa86f4f4bf1c20f",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 2976,
+              "length": 14,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                113
+              ],
+              "starting_column": 20,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 2957,
+                  "length": 103,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    113,
+                    114,
+                    115
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BasicToken",
+                    "source_mapping": {
+                      "start": 2148,
+                      "length": 927,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter BasicToken.balanceOf(address)._owner (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#113) is not in mixedCase\n",
+        "markdown": "Parameter [BasicToken.balanceOf(address)._owner](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L113) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L113",
+        "id": "abbd939db096de46e4f2f8b9aad1cab79514425fd73ff984859c702aca7eb080",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_addedValue",
+            "source_mapping": {
+              "start": 5100,
+              "length": 16,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                175
+              ],
+              "starting_column": 45,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "increaseApproval",
+                "source_mapping": {
+                  "start": 5056,
+                  "length": 247,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    175,
+                    176,
+                    177,
+                    178,
+                    179
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "increaseApproval(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.increaseApproval(address,uint256)._addedValue (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#175) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.increaseApproval(address,uint256)._addedValue](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L175) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L175",
+        "id": "b524397130c0c5c9f0919b919484848b3e9318673888e649c3317d73854383a0",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_subtractedValue",
+            "source_mapping": {
+              "start": 5351,
+              "length": 21,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                181
+              ],
+              "starting_column": 45,
+              "ending_column": 66
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "decreaseApproval",
+                "source_mapping": {
+                  "start": 5307,
+                  "length": 369,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    181,
+                    182,
+                    183,
+                    184,
+                    185,
+                    186,
+                    187,
+                    188,
+                    189,
+                    190
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "decreaseApproval(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#181) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.decreaseApproval(address,uint256)._subtractedValue](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L181) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L181",
+        "id": "bacc9d9ef276b25f644c6cdc16467fe2f6c0b661ea919be14c1d368caee34d61",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3255,
+              "length": 14,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                131
+              ],
+              "starting_column": 51,
+              "ending_column": 65
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3205,
+                  "length": 415,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 3079,
+                      "length": 2602,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._value (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#131) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._value](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131) is not in mixedCase\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L131",
+        "id": "e001d55ad5c9886aa799c28ded83887106a3cdbd6a17edfcc0db2c6ef55090d3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "slitherConstructorConstantVariables",
+            "source_mapping": {
+              "start": 5922,
+              "length": 525,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "IranCoinToken",
+                "source_mapping": {
+                  "start": 5922,
+                  "length": 525,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "slitherConstructorConstantVariables()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "INITIAL_SUPPLY = 17000000 * (10 ** uint256(decimals))",
+            "source_mapping": {
+              "start": 6166,
+              "length": 77,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                205
+              ],
+              "starting_column": 1,
+              "ending_column": 78
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "slitherConstructorConstantVariables",
+                "source_mapping": {
+                  "start": 5922,
+                  "length": 525,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "IranCoinToken",
+                    "source_mapping": {
+                      "start": 5922,
+                      "length": 525,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "slitherConstructorConstantVariables()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "IranCoinToken.slitherConstructorConstantVariables() (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#199-215) uses literals with too many digits:\n\t- INITIAL_SUPPLY = 17000000 * (10 ** uint256(decimals)) (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#205)\n",
+        "markdown": "[IranCoinToken.slitherConstructorConstantVariables()](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L199-L215) uses literals with too many digits:\n\t- [INITIAL_SUPPLY = 17000000 * (10 ** uint256(decimals))](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L205)\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L199-L215",
+        "id": "781fdee9b223093d81d07e079e90ffbca1833b07f9c7b0905273c7d26aae5287",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "slitherConstructorConstantVariables",
+            "source_mapping": {
+              "start": 5922,
+              "length": 525,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "IranCoinToken",
+                "source_mapping": {
+                  "start": 5922,
+                  "length": 525,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "slitherConstructorConstantVariables()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "rewards = 8000000 * (10 ** uint256(decimals))",
+            "source_mapping": {
+              "start": 6094,
+              "length": 69,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                204
+              ],
+              "starting_column": 1,
+              "ending_column": 70
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "slitherConstructorConstantVariables",
+                "source_mapping": {
+                  "start": 5922,
+                  "length": 525,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "IranCoinToken",
+                    "source_mapping": {
+                      "start": 5922,
+                      "length": 525,
+                      "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "slitherConstructorConstantVariables()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "IranCoinToken.slitherConstructorConstantVariables() (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#199-215) uses literals with too many digits:\n\t- rewards = 8000000 * (10 ** uint256(decimals)) (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#204)\n",
+        "markdown": "[IranCoinToken.slitherConstructorConstantVariables()](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L199-L215) uses literals with too many digits:\n\t- [rewards = 8000000 * (10 ** uint256(decimals))](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L204)\n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L199-L215",
+        "id": "a82f6e279f16fcbc1cbfac15d1cd8b811da86ce94bc1600942aa108959346153",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 1549,
+              "length": 26,
+              "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+              "is_dependency": false,
+              "lines": [
+                75
+              ],
+              "starting_column": 1,
+              "ending_column": 27
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ERC20Basic",
+                "source_mapping": {
+                  "start": 1526,
+                  "length": 260,
+                  "filename_relative": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_absolute": "C:/SmartContracts/smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "filename_short": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "ERC20Basic.totalSupply (../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#75) should be constant \n",
+        "markdown": "[ERC20Basic.totalSupply](../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L75) should be constant \n",
+        "first_markdown_element": "../smartbugs-wild/contracts/0x0056a6ac46c0540b9b39bfeecae0c9482f80f809.sol#L75",
+        "id": "2c110aec23a3747d0715a4a64169a91d2cdcaa87cf0dc5d41029b90ea95fadc0",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High",
+        "reference": "https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant"
+      }
+    ]
+  }
+}
