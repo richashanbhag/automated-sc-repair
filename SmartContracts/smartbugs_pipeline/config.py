@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from pathlib import Path
 
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -37,6 +38,35 @@ FINDING_FIELDS = [
     "filename", "filepath", "detector", "impact", "confidence", "description",
     "contract", "function", "source_lines",
 ]
+
+
+@dataclass(frozen=True)
+class OutputPaths:
+    """All mutable artifacts for one pipeline run."""
+
+    analysis: Path
+    findings: Path
+    ast_jsonl: Path
+    failed: Path
+    raw_dir: Path
+    log_path: Path
+
+
+def output_paths(start: int | None = None, end: int | None = None) -> OutputPaths:
+    """Return default outputs or an isolated, inclusive index-row range chunk."""
+    if (start is None) != (end is None):
+        raise ValueError("Both range bounds are required")
+    if start is None:
+        return OutputPaths(ANALYSIS_PATH, FINDINGS_PATH, AST_JSONL_PATH, FAILED_PATH, RAW_DIR, LOG_PATH)
+    suffix = f"{start}_{end}"
+    return OutputPaths(
+        DATA_DIR / f"analysis_{suffix}.csv",
+        DATA_DIR / f"findings_{suffix}.csv",
+        DATA_DIR / f"ast_{suffix}.jsonl",
+        DATA_DIR / f"failed_{suffix}.csv",
+        DATA_DIR / f"slither_raw_{suffix}",
+        LOG_DIR / f"slither_pipeline_{suffix}.log",
+    )
 
 
 def ensure_directories() -> None:

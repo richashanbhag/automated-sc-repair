@@ -22,8 +22,10 @@ from config import (
     FINDINGS_PATH,
     INDEX_PATH,
     LOG_PATH,
+    OutputPaths,
     RAW_DIR,
     ensure_directories,
+    output_paths,
 )
 from parser import parse_findings
 from slither_runner import run_slither
@@ -34,8 +36,10 @@ _COMPILER_LOCK = None
 
 def args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Sequential SmartBugs Wild collection pipeline")
-    parser.add_argument("--limit", type=int, default=100, help="number of valid contracts to process")
+    parser.add_argument("--limit", type=int, default=None, help="number of valid contracts to process (default: 100)")
     parser.add_argument("--full", action="store_true", help="process every valid contract in index.csv")
+    parser.add_argument("--start", type=int, help="inclusive 1-based row position in data/index.csv")
+    parser.add_argument("--end", type=int, help="inclusive 1-based row position in data/index.csv")
     parser.add_argument("--timeout", type=int, default=120, help="timeout per AST or Slither command")
     parser.add_argument("--workers", type=int, default=1, help="number of worker processes")
     parser.add_argument("--force", action="store_true", help="rerun selected successful contracts")
@@ -75,14 +79,23 @@ def write_rows(path: Path, fields: list[str], rows: list[dict[str, object]]) -> 
         writer.writerows(rows)
 
 
-def select_contracts(limit: int | None) -> list[dict[str, str]]:
+def select_contracts(limit: int | None, start: int | None = None, end: int | None = None) -> list[dict[str, str]]:
     if limit is not None and limit < 1:
         raise ValueError("--limit must be at least 1")
+    if (start is None) != (end is None):
+        raise ValueError("--start and --end must be provided together")
+    if start is not None and (start < 1 or end is None or end < start):
+        raise ValueError("Range must satisfy 1 <= --start <= --end")
     if not INDEX_PATH.exists():
         raise FileNotFoundError(f"Required index is missing: {INDEX_PATH}")
     selected: list[dict[str, str]] = []
+    selected_ids: set[str] = set()
     with INDEX_PATH.open(newline="", encoding="utf-8-sig") as stream:
-        for row in csv.DictReader(stream):
+        for position, row in enumerate(csv.DictReader(stream), start=1):
+            if start is not None and position < start:
+                continue
+            if end is not None and position > end:
+                break
             if "valid" in row and row["valid"].strip().lower() in {"", "0", "false", "no", "invalid"}:
                 continue
             filepath = row.get("filepath") or row.get("path") or ""
@@ -91,8 +104,12 @@ def select_contracts(limit: int | None) -> list[dict[str, str]]:
             row["filepath"] = filepath
             row["filename"] = row.get("filename") or Path(filepath).name
             row["pragma"] = row.get("pragma") or row.get("compiler_constraint") or ""
+            key = ident(row)
+            if key in selected_ids:
+                continue
+            selected_ids.add(key)
             selected.append(row)
-            if limit is not None and len(selected) == limit:
+            if start is None and limit is not None and len(selected) == limit:
                 break
     return selected
 
@@ -145,8 +162,8 @@ def append_ast_record(contract: dict[str, str], solc_version: str, ast: dict) ->
         stream.write(json.dumps(record, separators=(",", ":"), ensure_ascii=False) + "\n")
 
 
-def append_ast_json_record(record: dict[str, object]) -> None:
-    with AST_JSONL_PATH.open("a", encoding="utf-8") as stream:
+def append_ast_json_record(record: dict[str, object], path: Path = AST_JSONL_PATH) -> None:
+    with path.open("a", encoding="utf-8") as stream:
         stream.write(json.dumps(record, separators=(",", ":"), ensure_ascii=False) + "\n")
 
 
@@ -160,7 +177,7 @@ def make_ast_record(contract: dict[str, str], solc_version: str, ast: dict) -> d
     }
 
 
-def process_contract(contract: dict[str, str], timeout: int) -> dict[str, object]:
+def process_contract(contract: dict[str, str], timeout: int, raw_dir: Path = RAW_DIR) -> dict[str, object]:
     path = Path(contract["filepath"])
     failures: list[dict[str, object]] = []
     findings_out: list[dict[str, object]] = []
@@ -196,7 +213,7 @@ def process_contract(contract: dict[str, str], timeout: int) -> dict[str, object
         if ast.source_compilation_status == "FAILED":
             slither_status = "NOT_RUN"
         else:
-            slither = run_slither(path, RAW_DIR / f"{path.stem}.json", timeout, compiler.version)
+            slither = run_slither(path, raw_dir / f"{path.stem}.json", timeout, compiler.version)
             slither_status = slither.status
             if slither.status == "SUCCESS":
                 findings = parse_findings(slither.payload or {})
@@ -228,20 +245,21 @@ def checkpoint(
     analysis_rows: list[dict[str, object]],
     finding_rows: list[dict[str, object]],
     failure_rows: list[dict[str, object]],
+    paths: OutputPaths = output_paths(),
 ) -> None:
-    write_rows(ANALYSIS_PATH, ANALYSIS_FIELDS, analysis_rows)
-    write_rows(FINDINGS_PATH, FINDING_FIELDS, finding_rows)
-    write_rows(FAILED_PATH, FAILED_FIELDS, failure_rows)
+    write_rows(paths.analysis, ANALYSIS_FIELDS, analysis_rows)
+    write_rows(paths.findings, FINDING_FIELDS, finding_rows)
+    write_rows(paths.failed, FAILED_FIELDS, failure_rows)
 
 
 def remove_selected_rows(rows: list[dict[str, object]], selected_ids: set[str]) -> list[dict[str, object]]:
     return [row for row in rows if ident(row) not in selected_ids]
 
 
-def count_selected_ast_records(selected_ids: set[str]) -> tuple[int, int]:
+def count_selected_ast_records(selected_ids: set[str], ast_path: Path = AST_JSONL_PATH) -> tuple[int, int]:
     keys: list[str] = []
-    if AST_JSONL_PATH.exists():
-        with AST_JSONL_PATH.open(encoding="utf-8") as stream:
+    if ast_path.exists():
+        with ast_path.open(encoding="utf-8") as stream:
             for line in stream:
                 if not line.strip():
                     continue
@@ -255,12 +273,12 @@ def count_selected_ast_records(selected_ids: set[str]) -> tuple[int, int]:
     return len(keys), len(keys) - len(set(keys))
 
 
-def final_summary(selected: list[dict[str, str]]) -> None:
+def final_summary(selected: list[dict[str, str]], paths: OutputPaths = output_paths()) -> None:
     selected_ids = {ident(row) for row in selected}
-    analysis = [row for row in read_rows(ANALYSIS_PATH) if ident(row) in selected_ids]
-    findings = [row for row in read_rows(FINDINGS_PATH) if ident(row) in selected_ids]
-    failures = [row for row in read_rows(FAILED_PATH) if ident(row) in selected_ids]
-    ast_records, duplicate_ast_records = count_selected_ast_records(selected_ids)
+    analysis = [row for row in read_rows(paths.analysis) if ident(row) in selected_ids]
+    findings = [row for row in read_rows(paths.findings) if ident(row) in selected_ids]
+    failures = [row for row in read_rows(paths.failed) if ident(row) in selected_ids]
+    ast_records, duplicate_ast_records = count_selected_ast_records(selected_ids, paths.ast_jsonl)
     duplicate_contracts = len(analysis) - len({ident(row) for row in analysis})
     print("\n========================================")
     print("PIPELINE SUMMARY")
@@ -286,6 +304,7 @@ def apply_worker_result(
     finding_rows: list[dict[str, object]],
     failure_rows: list[dict[str, object]],
     ast_keys: set[str],
+    ast_path: Path = AST_JSONL_PATH,
 ) -> tuple[bool, int]:
     contract = result["contract"]
     key = ident(contract)
@@ -298,7 +317,7 @@ def apply_worker_result(
     failure_rows.extend(result["failures"])
     ast_record = result.get("ast_record")
     if ast_record is not None and key not in ast_keys:
-        append_ast_json_record(ast_record)
+        append_ast_json_record(ast_record, ast_path)
         ast_keys.add(key)
     return analysis.get("analysis_status") == "SUCCESS", len(result["findings"])
 
@@ -360,30 +379,49 @@ def retry_failed_ast(timeout: int) -> int:
     return 0
 
 
-def run(limit: int = 100, full: bool = False, timeout: int = 120, force: bool = False, workers: int = 1) -> int:
+def run(
+    limit: int | None = 100,
+    full: bool = False,
+    timeout: int = 120,
+    force: bool = False,
+    workers: int = 1,
+    start: int | None = None,
+    end: int | None = None,
+) -> int:
+    if (start is None) != (end is None):
+        raise ValueError("--start and --end must be provided together")
+    if start is not None and (start < 1 or end is None or end < start):
+        raise ValueError("Range must satisfy 1 <= --start <= --end")
+    if start is not None and full:
+        raise ValueError("--start/--end cannot be combined with --full")
+    if start is not None and limit is not None:
+        raise ValueError("--start/--end cannot be combined with --limit")
     ensure_directories()
+    paths = output_paths(start, end)
+    paths.raw_dir.mkdir(parents=True, exist_ok=True)
+    paths.log_path.parent.mkdir(parents=True, exist_ok=True)
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
-        handlers=[logging.FileHandler(LOG_PATH, encoding="utf-8"), logging.StreamHandler(sys.stdout)],
+        handlers=[logging.FileHandler(paths.log_path, encoding="utf-8"), logging.StreamHandler(sys.stdout)],
         force=True,
     )
     log = logging.getLogger("pipeline")
-    selected = select_contracts(None if full else limit)
+    selected = select_contracts(None if full else limit, start, end)
     print(f"Selected {len(selected)} contracts for analysis.")
     if workers < 1:
         raise ValueError("--workers must be at least 1")
     print(f"Workers: {workers}")
     selected_ids = {ident(row) for row in selected}
-    analysis_rows: list[dict[str, object]] = read_rows(ANALYSIS_PATH)
-    finding_rows: list[dict[str, object]] = read_rows(FINDINGS_PATH)
-    failure_rows: list[dict[str, object]] = read_rows(FAILED_PATH) if ANALYSIS_PATH.exists() else []
+    analysis_rows: list[dict[str, object]] = read_rows(paths.analysis)
+    finding_rows: list[dict[str, object]] = read_rows(paths.findings)
+    failure_rows: list[dict[str, object]] = read_rows(paths.failed) if paths.analysis.exists() else []
 
     if force:
         analysis_rows = remove_selected_rows(analysis_rows, selected_ids)
         finding_rows = remove_selected_rows(finding_rows, selected_ids)
         failure_rows = remove_selected_rows(failure_rows, selected_ids)
-        rewrite_ast_jsonl_without(AST_JSONL_PATH, selected_ids)
+        rewrite_ast_jsonl_without(paths.ast_jsonl, selected_ids)
 
     completed = {ident(row) for row in analysis_rows if row.get("analysis_status") == "SUCCESS"}
     todo = [contract for contract in selected if ident(contract) not in completed]
@@ -391,15 +429,15 @@ def run(limit: int = 100, full: bool = False, timeout: int = 120, force: bool = 
     analysis_rows = remove_selected_rows(analysis_rows, retry_ids)
     finding_rows = remove_selected_rows(finding_rows, retry_ids)
     failure_rows = remove_selected_rows(failure_rows, retry_ids)
-    rewrite_ast_jsonl_without(AST_JSONL_PATH, retry_ids)
-    ast_keys = read_ast_keys(AST_JSONL_PATH)
+    rewrite_ast_jsonl_without(paths.ast_jsonl, retry_ids)
+    ast_keys = read_ast_keys(paths.ast_jsonl)
 
     skipped = len(selected) - len(todo)
     for number, contract in enumerate(selected, 1):
         if ident(contract) in completed:
             print(f"[{number}/{len(selected)}] Skipping {contract['filename']} (already SUCCESS)")
     if skipped:
-        checkpoint(analysis_rows, finding_rows, failure_rows)
+        checkpoint(analysis_rows, finding_rows, failure_rows, paths)
 
     progress_completed = skipped
     progress_successful = sum(row.get("analysis_status") == "SUCCESS" for row in analysis_rows if ident(row) in selected_ids)
@@ -408,19 +446,19 @@ def run(limit: int = 100, full: bool = False, timeout: int = 120, force: bool = 
     if workers == 1:
         for contract in todo:
             log.info("Processing %s", contract["filepath"])
-            result = process_contract(contract, timeout)
-            success, _ = apply_worker_result(result, analysis_rows, finding_rows, failure_rows, ast_keys)
+            result = process_contract(contract, timeout, paths.raw_dir)
+            success, _ = apply_worker_result(result, analysis_rows, finding_rows, failure_rows, ast_keys, paths.ast_jsonl)
             progress_completed += 1
             progress_successful += 1 if success else 0
             progress_failed += 0 if success else 1
-            checkpoint(analysis_rows, finding_rows, failure_rows)
+            checkpoint(analysis_rows, finding_rows, failure_rows, paths)
             active = 0
             print(f"[{progress_completed}/{len(selected)}] completed | successful: {progress_successful} | failed: {progress_failed} | active: {active}")
     elif todo:
         with Manager() as manager:
             compiler_lock = manager.Lock()
             with ProcessPoolExecutor(max_workers=workers, initializer=init_worker, initargs=(compiler_lock,)) as executor:
-                futures = {executor.submit(process_contract, contract, timeout): contract for contract in todo}
+                futures = {executor.submit(process_contract, contract, timeout, paths.raw_dir): contract for contract in todo}
                 for future in as_completed(futures):
                     contract = futures[future]
                     try:
@@ -433,23 +471,30 @@ def run(limit: int = 100, full: bool = False, timeout: int = 120, force: bool = 
                             "failures": [{**contract, "stage": "worker", "error_type": type(exc).__name__, "error_message": str(exc), "resolved_solc_version": ""}],
                             "ast_record": None,
                         }
-                    success, _ = apply_worker_result(result, analysis_rows, finding_rows, failure_rows, ast_keys)
+                    success, _ = apply_worker_result(result, analysis_rows, finding_rows, failure_rows, ast_keys, paths.ast_jsonl)
                     progress_completed += 1
                     progress_successful += 1 if success else 0
                     progress_failed += 0 if success else 1
-                    checkpoint(analysis_rows, finding_rows, failure_rows)
+                    checkpoint(analysis_rows, finding_rows, failure_rows, paths)
                     active = len(futures) - (progress_completed - skipped)
                     print(f"[{progress_completed}/{len(selected)}] completed | successful: {progress_successful} | failed: {progress_failed} | active: {active}")
 
-    checkpoint(analysis_rows, finding_rows, failure_rows)
-    final_summary(selected)
+    checkpoint(analysis_rows, finding_rows, failure_rows, paths)
+    final_summary(selected, paths)
     return 0
 
 
 if __name__ == "__main__":
     parsed = args()
     try:
-        raise SystemExit(retry_failed_ast(parsed.timeout) if parsed.retry_failed_ast else run(parsed.limit, parsed.full, parsed.timeout, parsed.force, parsed.workers))
+        if parsed.retry_failed_ast and (parsed.start is not None or parsed.end is not None):
+            raise ValueError("--retry-failed-ast cannot be combined with --start/--end")
+        effective_limit = None if parsed.start is not None else (parsed.limit if parsed.limit is not None else 100)
+        raise SystemExit(
+            retry_failed_ast(parsed.timeout)
+            if parsed.retry_failed_ast
+            else run(effective_limit, parsed.full, parsed.timeout, parsed.force, parsed.workers, parsed.start, parsed.end)
+        )
     except (FileNotFoundError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         raise SystemExit(2)

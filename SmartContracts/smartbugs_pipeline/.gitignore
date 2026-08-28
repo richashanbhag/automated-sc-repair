@@ -12,14 +12,14 @@ __pycache__/
 .coverage
 coverage/
 
-# Generated pipeline artifacts.
-data/
+# Generated pipeline artifacts. Keep only the empty data-directory placeholder.
 data/ast.jsonl
 data/slither_raw/
 data/logs/
 data/**/*.csv
 data/**/*.json
 data/**/*.jsonl
+!data/.gitkeep
 
 # Local databases and secrets
 *.sqlite
